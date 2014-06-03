@@ -8,6 +8,7 @@
 #version         :3    
 #usage		       :comic2html file.cbr
 #notes           :To convert a bunch of files 'for i in *;do comic2html "$i";done'
+#License :GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 
 rm -fr /tmp/comic
 mkdir -p /tmp/comic
