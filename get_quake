@@ -1,0 +1,36 @@
+#!/bin/bash
+#Installs Quake
+
+clear
+
+if [ "$(id -u)" != "0" ]; then
+    echo "Sorry, you are not root or sudo."
+    echo "Restarting as sudo."
+    sleep 3
+    
+    sudo $0
+    exit 1
+fi
+
+echo "Warning, please be sure own a copy of quake when using this script"
+echo -n "do you want to continue? (Y/n):"
+read go
+
+if [ "$go" = "y" ] || [ "$go" = "Y" ] || [ "$go" = "" ]
+then
+  cd /tmp
+  mkdir quake
+  cd quake
+  
+  wget -c "http://download1645.mediafire.com/mai9ud3k8yog/im7waui8h4teud0/Quake+%281996%29%28Id+Software%29.zip" -O quake.zip
+  unzip quake.zip
+  cd id1
+  mkdir -p /usr/share/games/quake/id1/ &&
+  cp *.pak /usr/share/games/quake/id1/
+  
+  apt-get install quake
+  
+  echo "Please run the command 'quake'"
+fi
+
+echo "Good Bye."
