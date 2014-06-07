@@ -22,7 +22,7 @@ then
   mkdir quake
   cd quake
   
-  wget -c "http://download1645.mediafire.com/mai9ud3k8yog/im7waui8h4teud0/Quake+%281996%29%28Id+Software%29.zip" -O quake.zip
+  wget -c "https://dl.dropbox.com/s/59zkblrzj9ln233/quake.zip" -O quake.zip
   unzip quake.zip
   cd id1
   mkdir -p /usr/share/games/quake/id1/ &&
