@@ -1,0 +1,72 @@
+#########################################Program data is stored####
+/data/data/
+example:
+/data/data/com.google.android.gm/databases/
+
+
+###########################################FRAME BUFFER TRICKS###############
+Get Screenshot
+(HTC AMAZE is 544x960)
+adb pull /dev/graphics/fb0
+ffmpeg -vframes 1 -f rawvideo -pix_fmt rgb32 -s 544x960 -i fb0 screenshot.png
+
+----------------------------
+It is important to have the correct resolution
+This is my PengPod
+----------------------------
+sudo adb pull /dev/graphics/fb0
+avconv -vframes 1 -f rawvideo -pix_fmt rgb32 -s 800x480 -i fb0 screenshot.png
+display screenshot.png
+
+Display Random Static to Screen
+cat /dev/urandom > /dev/graphics/fb0
+
+Save Screenshot while on Device
+cat /dev/graphics/fb0 > screenshot
+
+Save Screenshot while on Device
+cat screenshot  > /dev/graphics/fb0
+
+        ############### MPLAYER Frame Buffer from Chroot##############
+(800x480) is the resolution of the Pengpod
+This will play, but if the video is smaller than screen there will be a black border
+mplayer -vo fbdev -fs -zoom video.mp4
+
+Same, but won't be centered
+mplayer -vo fbdev 
+
+This will play full screen, but might play slow
+mplayer -vo fbdev -fs -zoom -x 800 -y 480 video.mp4
+
+
+
+Frame Dropping doesn'tt seem to help 
+mplayer -vo fbdev -fs -zoom -x 800 -y 480  why.mp4 -framedrop
+
+***Note volume down is '/'  and volume up is '0'
+
+#########################################Remove/uninstall unwanted APPS ########################
+mount|grep system #find system device/partition
+mount -o remount,rw -t yaffs2 /dev/block/<devpart> /system
+pm list packages|grep <package name> #list all packages and grep the one you want
+pm path <package name> #once you found your package, now we find where it is installed too
+mv /old/apk/path /old/apk/path.old
+pm uninstall <package name>
+
+#######################################  Kill and restart android GUI ########################
+Kill Android GUI
+setprop ctl.stop media & setprop ctl.stop zygote
+
+Restart Android GUI
+setprop ctl.start media & setprop ctl.start zygote
+
+###################################### C compiling for Android ########################
+arm-linux-gnueabi-gcc-4.4 -static main.c -o mytest
+
+adb push main /system/bin/mytest
+adb shell
+cd /system/bin
+chmod 7 mytest
+
+
+
