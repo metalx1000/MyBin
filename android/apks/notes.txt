@@ -1,0 +1,41 @@
+java files are in 'src'
+'MainActivity.java' must have 'MainActivity' public class
+
+apk file name is set in 'build.xml' under 'project name'
+App name under icon and in title bar of program set in res/values/strings
+
+icons can be created iwth 'make_icon.sh' in scripts folder.
+
+=======setup=======
+sudo aptitude install ant default-jdk
+sudo apt-get install lib32stdc++6 #on 64bit Linux
+
+Get the Android SDK
+http://developer.android.com/sdk/index.html
+
+install the SDK for your Version of Android
+./android sdk
+
+List versions of Android you have available
+./android list targets
+
+Create a Project:
+android create project \
+--target 1 \
+--path ./myProject \
+--activity MyActivity \
+--package com.example.myproject
+
+Go to myProject and create Debugging APK:
+ant debug
+
+To make Release APK (not signed):
+ant release
+
+#Install using ADB:
+adb install myProject.apk
+
+#Reisntall
+adb install -r myProject.apk
+
+adb uninstall com.example.myproject

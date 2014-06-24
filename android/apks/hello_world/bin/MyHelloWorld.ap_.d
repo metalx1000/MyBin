@@ -1,4 +1,4 @@
-/tmp/MyBin/android/apks/hello_world/bin/MainActivity.ap_ \
+/tmp/MyBin/android/apks/hello_world/bin/MyHelloWorld.ap_ \
  : /tmp/MyBin/android/apks/hello_world/res/drawable-hdpi/ic_launcher.png \
 /tmp/MyBin/android/apks/hello_world/res/drawable-xhdpi/ic_launcher.png \
 /tmp/MyBin/android/apks/hello_world/res/drawable-ldpi/ic_launcher.png \
