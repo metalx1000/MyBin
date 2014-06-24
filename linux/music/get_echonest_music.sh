@@ -14,6 +14,13 @@ wget -q "http://labs.echonest.com/Uploader/search?q=$q&results=1000" -O-
 echo "What is the 'trid' of the song you want?"
 read trid
 
+if [ "$trid" = "" ]
+then
+    echo "Nothing to do."
+    echo "Good Bye."
+    exit 0
+fi 
+
 url="$(wget -q "http://static.echonest.com/infinite_jukebox_data/$trid.json" -O-|tr '"' '\n'|grep mp3|grep http)"
 
 echo "Would you like to play the song now? (Y/n)"
