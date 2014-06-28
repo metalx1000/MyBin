@@ -52,6 +52,14 @@ then
     echo "Getting Random Game..."
     wget "$(sort -R rom.lst|head -n1)" -O /tmp/rom.zip && fceux /tmp/rom.zip
     rm /tmp/rom.zip
+else
+    rm /tmp/rom.zip
+    clear
+    echo "Getting Game List..."
+    url="$(wget -q "http://tinyurl.com/n4pgleb" -O- | sort -R|head -n1)"
+    echo "Getting Random Game..."
+    wget "$url" -O /tmp/rom.zip && fceux /tmp/rom.zip
+    rm /tmp/rom.zip
 fi
 
 echo "Thanks for playing!!!"
