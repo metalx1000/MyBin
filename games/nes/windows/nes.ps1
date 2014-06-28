@@ -108,4 +108,4 @@ function Main(){
     write-output "Thank you for playing"
 }
 
-main()
+Main

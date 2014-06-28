@@ -33,7 +33,7 @@ then
     -background transparent \
     -flatten -colors 256 $icon
     
-    echo "id ICON $icon" > main.rc
+    echo "id ICON $icon" > win32/main.rc
 
     echo "Compiling..."
     i586-mingw32msvc-windres -o win32/ico.o win32/main.rc
