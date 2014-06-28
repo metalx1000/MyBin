@@ -37,7 +37,7 @@ then
     exit
 fi
 
-if [ -f "/usr/games/fceu" ];
+if [ -f "/usr/games/fceux" ];
 then
    echo "Emulator is installed."
 else
@@ -45,5 +45,14 @@ else
    sudo aptitude install fceu
 fi
 
+if [ "$1" = "local" ]
+then
+    rm /tmp/rom.zip
+    clear
+    echo "Getting Random Game..."
+    wget "$(sort -R rom.lst|head -n1)" -O /tmp/rom.zip && fceux /tmp/rom.zip
+    rm /tmp/rom.zip
+fi
 
-
+echo "Thanks for playing!!!"
+echo "Good Bye!!!"
