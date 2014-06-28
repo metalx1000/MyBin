@@ -45,6 +45,32 @@ else
    sudo aptitude install fceu
 fi
 
+#################Download ROMS###############
+if [ "$1" = "ALL" ]
+then
+    mkdir roms
+    cd roms
+    clear
+
+    echo "Downloading all ROMS in random order..."
+    echo "This WILL take a long time."
+    echo "Might Want to start this before you go to bed"
+    echo "and hope it's done in the morning"
+    echo "My guess is that total space needed will be around 1GB"
+    echo "But that is just a guess."
+
+    wget -q "http://tinyurl.com/n4pgleb" -O-|sort -R |while read url
+    do
+       wget -c "$url" 
+    done
+
+    echo "ROMS downloaded to 'roms' folder."
+    echo "Goodbye."
+    exit
+fi
+
+
+#################Game Play##################
 if [ "$1" = "local" ]
 then
     rm /tmp/rom.zip
