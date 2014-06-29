@@ -1,13 +1,10 @@
 <#
 PowerShell -ExecutionPolicy Bypass <script.ps1> -musicFile <file/url>
 #>
-
+param([string]$musicFile = "http://static.echonest.com/audio2/1353978910554/06%20What%20If%20We%20Could%20.mp3")
 Add-Type -AssemblyName presentationCore 
 $mediaPlayer = New-Object system.windows.media.mediaplayer 
 
- param (
-    [string]$musicFile = "http://static.echonest.com/audio2/1353978910554/06%20What%20If%20We%20Could%20.mp3"
- )
 
 
 $mediaPlayer.open($musicFile) 
