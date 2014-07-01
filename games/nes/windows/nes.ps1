@@ -91,12 +91,25 @@ function Main(){
         Start-Sleep -seconds 2
     }
     
-    $mediaPlayer.Stop()
+    
+
+	$wc = New-Object Net.WebClient
+	$list = $wc.DownloadString("https://raw.githubusercontent.com/metalx1000/MyBin/master/games/nes/linux/rom.lst")
+	$url = ($list -split '[\r\n]') |? {$_} | Get-Random
+	
+	write-output "Retrieving ROM" 
+	write-output "$url"
+	
+	$folder = "fceux-2.2.2-win32"
+	$file = "rom.zip"
+	$rom = "$folder\roms\$file"
+	$wc.DownloadFile($url,$rom)
     
     Write-Output "Starting Random Game!!!"
     
-    $rom = Get-ChildItem $folder\roms| Get-Random
-    cmd /c $folder\fceux $folder\roms\$rom
+	$mediaPlayer.Stop()
+    
+    cmd /c $folder\fceux $rom
     
     $del = Read-Host 'Do you want to remove the emulator and roms? (Y/n)'
     
