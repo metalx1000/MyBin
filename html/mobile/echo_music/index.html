@@ -1,0 +1,54 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Mobile: Theme Download</title>
+	<link rel="stylesheet" href="themes/echonest.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+
+        <script>
+                        var items = [];
+            $(document).ready(function(){
+                $("#fetch").change(function(){
+                    $.getJSON( "http://labs.echonest.com/Uploader/search?q=" + $("#fetch").val() + "&results=1000", function( data ) {
+                        for(var i=0;i<data.length;i++){
+                            //items.push(data[i].artist);
+                            var label = data[i].artist + " <br> " + data[i].title;
+                            var btn = "<a href=\"#\" class=\"track ui-btn ui-shadow ui-corner-all\" trid=" + data[i].trid + ">" + label +"</a>"
+                            $("#music_list")
+                                .controlgroup("container")
+                                .append(btn);
+                            $("#music_list")
+                                .enhanceWithin()
+                                .controlgroup("refresh");
+                        }
+
+                    });
+
+                });
+
+            });
+        </script>
+
+</head>
+<body>
+	<div data-role="page" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>Echo Music Search!</h1>
+		</div>
+		<div data-role="content" data-theme="a">
+                    <input type="text" id="fetch">
+                    <form>
+                        <input data-type="search" id="filterControlgroup-input">
+                    </form>
+                    <div id="music_list" data-role="controlgroup" data-filter="true" data-input="#filterControlgroup-input">
+                    </div>
+		</div>
+	</div>
+
+        <div id="test"></div>
+</body>
+</html>
