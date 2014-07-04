@@ -17,17 +17,18 @@
                         for(var i=0;i<data.length;i++){
                             //items.push(data[i].artist);
                             var label = data[i].artist + " <br> " + data[i].title;
-                            var btn = "<a href=\"#\" class=\"track ui-btn ui-shadow ui-corner-all\" trid=" + data[i].trid + ">" + label +"</a>"
-                            $("#music_list")
-                                .controlgroup("container")
-                                .append(btn);
-                            $("#music_list")
-                                .enhanceWithin()
-                                .controlgroup("refresh");
+                            var lst = "<li class=\"track\" id=" + data[i].trid + ">" + label +"</li>"
+                            $("#music_list").append(lst).listview('refresh');
                         }
 
                     });
 
+                });
+
+
+                $(".track").click(function(evt){
+                    //var trid = this.attr("trid");
+                    alert(this.id);
                 });
 
             });
@@ -41,14 +42,20 @@
 		</div>
 		<div data-role="content" data-theme="a">
                     <input type="text" id="fetch">
+
+                    <ul id="music_list" data-role="listview" data-filter="true" data-filter-placeholder="Find cars..." data-filter-theme="a" data-inset="true">
+                        <li id="sdkjfh" class="track">Ferrari</li>
+                    </ul>
+<!--
                     <form>
                         <input data-type="search" id="filterControlgroup-input">
+                        <a href="#" class="track ui-btn ui-shadow ui-corner-all" trid="test">Button 1</a>
                     </form>
                     <div id="music_list" data-role="controlgroup" data-filter="true" data-input="#filterControlgroup-input">
                     </div>
+-->
 		</div>
 	</div>
 
-        <div id="test"></div>
 </body>
 </html>
