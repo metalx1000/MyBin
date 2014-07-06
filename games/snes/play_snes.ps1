@@ -99,27 +99,35 @@ function Main(){
 
     $rom = "roms\Super Mario World (U) [!].smc"
     
-    cls
-    Write-Output "Player some Mario World While I download a bunch of ROMS"
-    Write-Output "By 'a bunch', I mean all of them."
-    Start-Sleep -seconds 2
-    
     $mediaPlayer.Stop()
     
-    cd $pwd\$folder
-    cmd /c start zsnesw.exe $rom
+    $get_roms = Read-Host 'Emulator is ready. Would you like to get roms? (y/N)'
+    
+    if(($get_roms -eq "Y" )){
+        cls
+        Write-Output "Player some Mario World While I download a bunch of ROMS"
+        Write-Output "By 'a bunch', I mean all of them."
+        Start-Sleep -seconds 2
+    
+        #cd $pwd\$folder
+        cmd /c start $pwd\$folder\zsnesw.exe $pwd\$folder\$rom
 
-    DownloadFile $roms_url $roms_zip 
-    $zip = $shell.NameSpace("$roms_zip")
-    
-    
+        DownloadFile $roms_url $roms_zip 
+        $zip = $shell.NameSpace("$roms_zip")
+        
+        
         foreach($item in $zip.items())
         {
-            $shell.Namespace("$pwd\roms\").copyhere($item)
+                $shell.Namespace("$pwd\$folder\").copyhere($item)
         }
-        Remove-Item $zip -Force -Recurse
-   
-    cd $storageDir
+        write-output "Removing $roms_zip"
+        Remove-Item $roms_zip -Force -Recurse
+     
+    }else{
+        #cd $pwd\$folder
+        cmd /c start $pwd\$folder\zsnesw.exe $rom        
+    }
+    
     
     $del = Read-Host 'Do you want to remove the emulator and roms? (y/N)'
     
