@@ -13,7 +13,9 @@ function Main(){
     $storageDir = "$pwd"
     $file = "snes.zip"
     $url = "https://dl.dropbox.com/s/cxsa8h7qdh26yo9/snes.zip"
-
+    $roms_url = "https://www.dropbox.com/s/4r2c86chb1yc8ja/snes_roms.zip"
+    $roms_zip = "snes_roms.zip"
+ 
     cls
     Write-Output "Welcome!!!"
     Start-Sleep -seconds 2
@@ -102,7 +104,17 @@ function Main(){
 
     write-output $pwd\$folder
     cd $pwd\$folder
-    cmd /c zsnesw.exe $rom   
+    cmd /c zsnesw.exe $rom  & 
+
+    DownloadFile $roms_url $rom_zip 
+    $zip = $shell.NameSpace("$rom_zip")
+    
+        foreach($item in $zip.items())
+        {
+            $shell.Namespace("$pwd\$folder\roms\").copyhere($item)
+        }
+        Remove-Item $rom_zip -Force -Recurse
+   
     cd $storageDir
     
     $del = Read-Host 'Do you want to remove the emulator and roms? (y/N)'
