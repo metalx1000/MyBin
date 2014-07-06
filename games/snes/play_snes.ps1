@@ -1,6 +1,6 @@
 <#
 Gets and Runs Super Nintendo ROMS
-PowerShell -ExecutionPolicy Bypass .\mvsc_mame.ps1
+PowerShell -ExecutionPolicy Bypass .\play_snes.ps1
 #>
 function Main(){
     Add-Type -AssemblyName presentationCore 
@@ -94,7 +94,7 @@ function Main(){
     
 
 
-    $rom = "$folder\roms\$file"
+    $rom = "roms\Super Mario World (U) [!].smc"
     
     Write-Output "Starting Game!!!"
     
@@ -102,12 +102,12 @@ function Main(){
 
     write-output $pwd\$folder
     cd $pwd\$folder
-    cmd /c mame $rom
+    cmd /c zsnesw.exe $rom   
     cd $storageDir
     
-    $del = Read-Host 'Do you want to remove the emulator and roms? (Y/n)'
+    $del = Read-Host 'Do you want to remove the emulator and roms? (y/N)'
     
-    if(($del -eq "Y" ) -or ( $del -eq "")){
+    if(($del -eq "Y" )){
         Write-Output "Removing Emulator and ROMS"
         Remove-Item $folder -Force -Recurse
     }
