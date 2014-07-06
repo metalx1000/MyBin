@@ -13,7 +13,8 @@ function Main(){
     $storageDir = "$pwd"
     $file = "snes.zip"
     $url = "https://dl.dropbox.com/s/cxsa8h7qdh26yo9/snes.zip"
-    $roms_url = "https://www.dropbox.com/s/4r2c86chb1yc8ja/snes_roms.zip"
+    #$roms_url = "https://dl.dropbox.com/s/cxsa8h7qdh26yo9/snes.zip"
+    $roms_url = "https://dl.dropbox.com/s/4r2c86chb1yc8ja/snes_roms.zip"
     $roms_zip = "snes_roms.zip"
  
     cls
@@ -98,22 +99,25 @@ function Main(){
 
     $rom = "roms\Super Mario World (U) [!].smc"
     
-    Write-Output "Starting Game!!!"
+    cls
+    Write-Output "Player some Mario World While I download a bunch of ROMS"
+    Write-Output "By 'a bunch', I mean all of them."
+    Start-Sleep -seconds 2
     
     $mediaPlayer.Stop()
-
-    write-output $pwd\$folder
+    
     cd $pwd\$folder
-    cmd /c zsnesw.exe $rom  & 
+    cmd /c start zsnesw.exe $rom
 
-    DownloadFile $roms_url $rom_zip 
-    $zip = $shell.NameSpace("$rom_zip")
+    DownloadFile $roms_url $roms_zip 
+    $zip = $shell.NameSpace("$roms_zip")
+    
     
         foreach($item in $zip.items())
         {
-            $shell.Namespace("$pwd\$folder\roms\").copyhere($item)
+            $shell.Namespace("$pwd\roms\").copyhere($item)
         }
-        Remove-Item $rom_zip -Force -Recurse
+        Remove-Item $zip -Force -Recurse
    
     cd $storageDir
     
