@@ -6,7 +6,7 @@ img="openbsd.img"
 url="http://openbsd.mirrorcatalogs.com/pub/OpenBSD/5.5/i386/cd55.iso"
 
 clear
-echo "Getting install ISO...\n"
+echo "Getting install ISO..."
 
 #get ISO http://www.openbsd.org/
 wget -c "$url" -O $iso 
@@ -16,7 +16,7 @@ if [ -a $img ]
 then
     echo "$img image already exists"
 else
-    echo "\nCreating $img for install...\n"
+    echo "Creating $img for install..."
     dd bs=512 count=5400000 if=/dev/zero of=$img
 fi
 
