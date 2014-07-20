@@ -25,7 +25,7 @@ qemu-system-i386 -boot d -cdrom $iso -hda $img
 
 clear
 ###############NOTES##########
-echo "
+echo '
 NOTES on Package manager for openBSD
 http://www.cyberciti.biz/tips/openbsd-add-package-howto.html
 http://bsdly.blogspot.com/2013/04/youve-installed-it-now-what-packages.html
@@ -38,7 +38,7 @@ http://bsdly.blogspot.com/2013/04/youve-installed-it-now-what-packages.html
 
 ##########update all package######
 # pkg_add
-"
+'
 
 #run system in qemu
 qemu-system-i386 -hda $img
