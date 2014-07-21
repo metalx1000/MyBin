@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+<title>Simple Web Speech Recognition Example</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+
+
+<div id="transcript">&nbsp;</div>
+<button id="start_button">Click to Start</button>
+
+
+
+<script type="text/javascript">
+
+    var final_transcript = '';
+    var recognizing = false;
+
+    var language = 'en-US';  // change this to your language
+
+    $(document).ready(function() {
+
+        // check that your browser supports the API
+        if (!('webkitSpeechRecognition' in window)) {
+            alert("Your Browser does not support the Speech API");
+
+        } else {
+
+            // Create the recognition object and define four event handlers (onstart, onerror, onend, onresult)
+
+            var recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;         // keep processing input until stopped
+            recognition.interimResults = true;     // show interim results
+            recognition.lang = language;           // specify the language
+
+            recognition.onstart = function() {
+                recognizing = true;
+                $('#start_button').html('Click to Stop');
+            };
+
+            recognition.onerror = function(event) {
+                console.log("There was a recognition error...");
+            };
+
+            recognition.onend = function() {
+                recognizing = false;
+            };
+
+            recognition.onresult = function(event) {
+                var interim_transcript = '';
+
+                // Assemble the transcript from the array of results
+                for (var i = event.resultIndex; i < event.results.length; ++i) {
+                    if (event.results[i].isFinal) {
+                        final_transcript += event.results[i][0].transcript + '<br>';
+                    } else {
+                        interim_transcript += event.results[i][0].transcript;
+                    }
+                }
+
+                // update the web page
+                if(final_transcript.length > 0) {
+                    $('#transcript').html(final_transcript);
+                }
+            };
+
+
+            $("#start_button").click(function(e) {
+                e.preventDefault();
+
+                if (recognizing) {
+                    recognition.stop();
+                    $('#start_button').html('Click to Start Again');
+                    recognizing = false;
+                } else {
+                    final_transcript = '';
+
+                    // Request access to the User's microphone and Start recognizing voice input
+                    recognition.start();
+                    $('#start_button').html('waiting');
+                    $('#transcript').html('&nbsp;');
+                }
+            });
+       
+            //start recognition on page load 
+            recognition.start();
+        }
+
+    });
+
+
+</script>
+
+</body>
+</html>
+
