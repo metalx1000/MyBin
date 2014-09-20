@@ -1,0 +1,24 @@
+#!/bin/bash
+#still need to check if IP changes on this service
+
+if [ -f "/usr/bin/axel" ];
+then 
+	echo "Axel is installed"
+else 
+	echo "Installing Axel"
+	sudo apt-get install axel -y
+fi
+
+rm /tmp/m.lst
+for i in {1..10}
+do
+	wget -q "http://www.myfreemp3.cc/mp3/nine+inch+nails?page=$i" -O- >> /tmp/m.lst
+done
+
+	
+	sed 's/data-aid/\n/g' /tmp/m.lst|grep "^="|cut -d\" -f2|shuf|\
+	while read line;
+	do 
+		axel -n 10 "http://94.102.56.238/play.php?q=${line}dcaa_" -o $line.mp3
+		for i in -*;do mv -- $i $(echo $i|cut -d\- -f2);done
+	done
