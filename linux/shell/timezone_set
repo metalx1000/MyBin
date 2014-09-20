@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#set time zone
+dpkg-reconfigure tzdata
+
+echo "Updating time from server."
+ntpdate ntp.ubuntu.com
