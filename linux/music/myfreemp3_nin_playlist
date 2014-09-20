@@ -1,0 +1,26 @@
+#!/bin/bash
+#still need to check if IP changes on this service
+
+if [ -f "/usr/bin/mplayer" ];
+then 
+    echo "Mplayer is installed"
+else 
+    echo "Installing Mplayer"
+    sudo apt-get install mplayer -y
+fi
+
+rm /tmp/m.lst
+echo "Getting MP3 List"
+for i in {1..10}
+do
+    wget -q "http://www.myfreemp3.cc/mp3/nine+inch+nails?page=$i" -O- >> /tmp/m.lst
+done
+
+echo "Creating Playlist"
+    sed 's/data-aid/\n/g' /tmp/m.lst|grep "^="|cut -d\" -f2|shuf|\
+    while read line;
+    do 
+        echo "http://94.102.56.238/play.php?q=${line}dcaa_" 
+    done > /tmp/nin.lst
+
+mplayer -shuffle -playlist /tmp/nin.lst
