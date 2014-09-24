@@ -1,7 +1,9 @@
 #!/bin/bash
+#sudo or root please
 
 #set time zone
 dpkg-reconfigure tzdata
 
 echo "Updating time from server."
+#sudo aptitude install ntpdate
 ntpdate ntp.ubuntu.com
