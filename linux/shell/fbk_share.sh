@@ -2,7 +2,7 @@
 #Share a Random http://filmsbykris.com video 
 browser="google-chrome"
 info="$(wget "http://filmsbykris.com/site_data/video.lst" -q -O-|shuf|head -n1)"
-title="$(echo -n "$info"|cut -d\| -f1)"
+title="$(echo -n "$info"|cut -d\| -f1|tr '#' '-')"
 id="$(echo -n "$info"|cut -d\| -f2)"
 
 $browser "https://plus.google.com/share?url=https://www.youtube.com/watch?v=$id=en"
