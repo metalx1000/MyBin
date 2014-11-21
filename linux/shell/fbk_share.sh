@@ -6,7 +6,7 @@ title="$(echo -n "$info"|cut -d\| -f1|tr '#' '-')"
 id="$(echo -n "$info"|cut -d\| -f2)"
 
 echo "$title https://www.youtube.com/watch?v=$id=en"|xclip
-
+echo "$title https://www.youtube.com/watch?v=$id=en"
 
 $browser "https://plus.google.com/share?url=https://www.youtube.com/watch?v=$id=en"
 $browser "https://twitter.com/intent/tweet?url=https://www.youtube.com/watch?v=$id&text=$title:&via=YouTube&related=YouTube,YouTubeTrends,YTCreators"
