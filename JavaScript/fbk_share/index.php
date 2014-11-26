@@ -9,6 +9,7 @@
                 var r = Math.floor( Math.random() * lines.length );
                 var line = lines[r].split('|');
                 title = line[0];
+                title = title.replace("#", "-");
                 id = line[1];
                 $("#result").html( "<h1>" + title + "</h1>" );
                 $("#result").append("<img id='go' src=http://i3.ytimg.com/vi/" + id + "/hqdefault.jpg><br>");
