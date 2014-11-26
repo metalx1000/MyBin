@@ -10,7 +10,7 @@
 #notes :run as sudo or root
 #License :GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 
-apt-get autoclean
-apt-get clean
+apt-get autoclean -y
+apt-get clean -y
 apt-get autoremove -y
 apt-get install gtkorphan -y
