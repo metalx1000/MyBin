@@ -17,7 +17,7 @@
                      title=title.replace( regex, "#$1" );
                     //title = title.replace("(" + entry + ")"gi, '#$1');
                 });
-                title2 = title.replace("#", '%23');
+                title2 = title.replace(/#/g, '%23');
                 id = line[1];
                 $("#result").html( "<h1>" + title + "</h1>" );
                 $("#result").append("<img id='go' src=http://i3.ytimg.com/vi/" + id + "/hqdefault.jpg><br>");
