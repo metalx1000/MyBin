@@ -36,3 +36,4 @@ android
 wireless
 game
 ssh
+Cinelerra
