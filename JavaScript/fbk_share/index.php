@@ -3,27 +3,40 @@
     <script src="js/jquery-2.1.1.min.js"></script> 
     <script>
         list="video.lst";
+        var a=[];
         $(document).ready(function(){
-            $.get( list, function( data ) {
-                var lines = data.split('\n');
-                var r = Math.floor( Math.random() * lines.length );
-                var line = lines[r].split('|');
-                title = line[0];
-                title = title.replace("#", "-");
+            function get_list(){
+                $.get( list, function( data ) {
+                    var lines = data.split('\n');
+                    var r = Math.floor( Math.random() * lines.length );
+                    var line = lines[r].split('|');
+                    title = line[0];
+                    title = title.replace("#", "-");
 
-                var a = ["linux", "bash", "python", "programming", "tutorial","shell","gtk","qt", "grep","awk","blender", "ThreeJS", "HTML5", "BabylonJS", "Kdenlive","Imagemagick","GIMP","Ardour","hydrogen","pygame","slitaz","webkit","Windows","newcat","GUI"];
-                a.forEach(function(entry) {
-                     var regex = new RegExp( '(' + entry + ')', 'gi' );
-                     title=title.replace( regex, "#$1" );
-                    //title = title.replace("(" + entry + ")"gi, '#$1');
+                    //var a = ["linux", "bash", "python", "programming", "tutorial","shell","gtk","qt", "grep","awk","blender", "ThreeJS", "HTML5", "BabylonJS", "Kdenlive","Imagemagick","GIMP","Ardour","hydrogen","pygame","slitaz","webkit","Windows","newcat","GUI"];
+                    a.forEach(function(entry) {
+                        if(entry != ""){
+                         var regex = new RegExp( '(' + entry + ')', 'gi' );
+                         title=title.replace( regex, "#$1" );
+                        //title = title.replace("(" + entry + ")"gi, '#$1');
+                        }
+                    });
+                    title2 = title.replace(/#/g, '%23');
+                    id = line[1];
+                    $("#result").html( "<h1>" + title + "</h1>" );
+                    $("#result").append("<img id='go' src=http://i3.ytimg.com/vi/" + id + "/hqdefault.jpg><br>");
+                    $("#result").append(title + " https://www.youtube.com/watch?v=" + id); 
                 });
-                title2 = title.replace(/#/g, '%23');
-                id = line[1];
-                $("#result").html( "<h1>" + title + "</h1>" );
-                $("#result").append("<img id='go' src=http://i3.ytimg.com/vi/" + id + "/hqdefault.jpg><br>");
-                $("#result").append(title + " https://www.youtube.com/watch?v=" + id); 
+            }
+
+            $.get( "replace.php", function( data ) {
+                a=data.split("\n");
+                get_list();
+            }).done(function() {
             });
-   
+
+
+ 
             $("#result").on('click', '#go', function(){
                 window.open("https://plus.google.com/share?url=https://www.youtube.com/watch?v="+id);
                 window.open("https://twitter.com/intent/tweet?url=https://www.youtube.com/watch?v="+id+"&text="+title2+":&via=YouTube&related=YouTube,YouTubeTrends,YTCreators");
