@@ -1,0 +1,10 @@
+{
+   "content_scripts": [ {
+      "js": [ "html_code.js" ],
+      "matches": [ "https://plus.google.com/*" ]
+   } ],
+   "description": "Works with Films By Kris share script to auto fill posts",
+   "manifest_version": 2,
+   "name": "Share Titles and HASHTAGS",
+   "version": "1.0"
+}
