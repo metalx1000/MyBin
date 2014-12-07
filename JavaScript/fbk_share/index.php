@@ -38,7 +38,7 @@
 
  
             $("#result").on('click', '#go', function(){
-                window.open("https://plus.google.com/share?url=https://www.youtube.com/watch?v="+id);
+                window.open("https://plus.google.com/share?url=https://www.youtube.com/watch?v="+id+"#"+title2);
                 window.open("https://twitter.com/intent/tweet?url=https://www.youtube.com/watch?v="+id+"&text="+title2+":&via=YouTube&related=YouTube,YouTubeTrends,YTCreators");
                 window.open("https://www.blogger.com/blog-this.g?n="+title2+"&source=youtube&b=%3Ciframe+width=%22480%22+height=%22270%22+src=%22https://www.youtube.com/embed/"+id+"%22+frameborder=%220%22+allowfullscreen%3E%3C/iframe%3E&eurl=https://i.ytimg.com/vi/"+id+"/hqdefault.jpg");
 
