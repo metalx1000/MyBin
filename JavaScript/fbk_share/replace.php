@@ -37,3 +37,4 @@ wireless
 game
 ssh
 Cinelerra
+ZynAddSubFX
