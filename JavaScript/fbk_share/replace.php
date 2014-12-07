@@ -37,4 +37,6 @@ wireless
 game
 ssh
 Cinelerra
+jquery
+Database
 ZynAddSubFX

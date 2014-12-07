@@ -23,9 +23,10 @@
                     });
                     title2 = title.replace(/#/g, '%23');
                     id = line[1];
+                    text = title + " https://www.youtube.com/watch?v=" + id;
                     $("#result").html( "<h1>" + title + "</h1>" );
                     $("#result").append("<img id='go' src=http://i3.ytimg.com/vi/" + id + "/hqdefault.jpg><br>");
-                    $("#result").append(title + " https://www.youtube.com/watch?v=" + id); 
+                    $("#result").append("<input id='text' onClick='this.select();' style='width:100%;font-size:50px' value='"+text+"'>" ); 
                 });
             }
 
@@ -42,7 +43,7 @@
                 window.open("https://twitter.com/intent/tweet?url=https://www.youtube.com/watch?v="+id+"&text="+title2+":&via=YouTube&related=YouTube,YouTubeTrends,YTCreators");
                 window.open("https://www.blogger.com/blog-this.g?n="+title2+"&source=youtube&b=%3Ciframe+width=%22480%22+height=%22270%22+src=%22https://www.youtube.com/embed/"+id+"%22+frameborder=%220%22+allowfullscreen%3E%3C/iframe%3E&eurl=https://i.ytimg.com/vi/"+id+"/hqdefault.jpg");
 
-                window.open("https://www.facebook.com/pages/Films-By-Kris/225113590836253");
+                window.open("https://www.facebook.com/pages/Films-By-Kris/225113590836253#"+title2);
             });
         });
 

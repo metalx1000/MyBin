@@ -1,7 +1,7 @@
 {
    "content_scripts": [ {
       "js": [ "html_code.js" ],
-      "matches": [ "https://plus.google.com/*" ]
+      "matches": [ "https://plus.google.com/share*", "https://www.facebook.com/pages/Films-By-Kris/225113590836253" ]
    } ],
    "description": "Works with Films By Kris share script to auto fill posts",
    "manifest_version": 2,
