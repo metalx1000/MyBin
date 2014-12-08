@@ -40,3 +40,4 @@ Cinelerra
 jquery
 Database
 ZynAddSubFX
+Audacity
