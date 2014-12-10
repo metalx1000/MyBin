@@ -40,6 +40,7 @@ pengpod
 android
 wireless
 game
+Qsynth
 ssh
 Cinelerra
 jquery
