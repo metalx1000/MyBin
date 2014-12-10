@@ -1,3 +1,5 @@
+debian
+debootstrap
 mplayer
 linux
 bash
