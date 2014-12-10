@@ -1,3 +1,4 @@
+mplayer
 linux
 bash
 python
