@@ -1,7 +1,7 @@
 debian
 debootstrap
 arm 
-Arduino
+arduino
 mplayer
 linux
 bash
