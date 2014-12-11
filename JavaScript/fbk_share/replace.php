@@ -15,6 +15,7 @@ grep
 awk
 blender
 ThreeJS
+mysql
 HTML5
 BabylonJS
 Kdenlive
