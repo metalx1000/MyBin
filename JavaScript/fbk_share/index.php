@@ -27,7 +27,7 @@
                     text = title + " https://www.youtube.com/watch?v=" + id;
                     $("#result").html( "<h1>" + title + "</h1>" );
                     $("#result").append("<img id='go' src=http://i3.ytimg.com/vi/" + id + "/hqdefault.jpg><br>");
-                    $("#result").append("<input id='text' onClick='this.select();' style='width:100%;font-size:50px' value='"+text+"'>" ); 
+                    $("#result").append("<input id='text' onClick='this.select();' style='width:100%;font-size:50px' value='"+text+" via @youtube'>" ); 
                 });
             }
 
