@@ -51,3 +51,4 @@ Database
 ZynAddSubFX
 Audacity
 SED
+vim
