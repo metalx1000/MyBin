@@ -5,6 +5,7 @@ arduino
 mplayer
 linux
 bash
+wget
 python
 programming
 tutorial
