@@ -14,10 +14,17 @@
             $.get( buttons, function( data ) {
                 var b = data.split('\n');
                 b.forEach(function(button){
-                    $("#buttons").append("<button class='tag'>" + button + "</button>");        
+                    $("#buttons").append("<button class='tag' style='font-size:25px'>" + button + "</button>");        
                 });
             });
 
+            $("body").on('click','.tag',function(){
+                var tag = $(this).html();
+                //console.log(tag);
+                var val = $("#text").val();
+                $("#text").val(val + " " + tag);
+            });
+            
 
             //Get list of video
             function get_list(){
@@ -41,7 +48,7 @@
                     text = title + " https://www.youtube.com/watch?v=" + id;
                     $("#result").html( "<h1>" + title + "</h1>" );
                     $("#result").append("<img id='go' src=http://i3.ytimg.com/vi/" + id + "/hqdefault.jpg><br>");
-                    $("#result").append("<input id='text' onClick='this.select();' style='width:100%;font-size:50px' value='"+text+" via @youtube'>" ); 
+                    $("#result").append("<input id='text' onClick='this.select();' style='width:100%;font-size:25px' value='"+text+" via @youtube'>" ); 
                 });
             }
 
@@ -68,6 +75,7 @@
 </head>
 
 <body>
+    <div id="links"></div>
     <div id="result"></div>
     <div id="buttons"></div>
 </body>
