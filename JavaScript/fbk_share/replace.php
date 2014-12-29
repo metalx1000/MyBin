@@ -40,7 +40,6 @@ music
 pengpod
 android
 wireless
-game
 php
 Qsynth
 ssh

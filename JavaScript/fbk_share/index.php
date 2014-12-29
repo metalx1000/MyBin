@@ -12,16 +12,16 @@
         function update_links(){
             title2 = $("#text").val();
             title2 = title2.replace(/#/g, '%23');
-            var twitter = "https://twitter.com/intent/tweet?url=https://www.youtube.com/watch?v="+id+"&text="+title2+":&via=YouTube&related=YouTube,YouTubeTrends,YTCreators";
+            var twitter = "https://twitter.com/intent/tweet?text="+title2;
             $("#twitter").attr("href", twitter);
-
-            var google = "https://plus.google.com/share?url=https://www.youtube.com/watch?v="+id+"#"+title2;
+    
+            var google = "https://plus.google.com/share?url=https://www.youtube.com/watch?v="+id;
             $("#google").attr("href", google);
 
             var blogger = "https://www.blogger.com/blog-this.g?n="+title2+"&source=youtube&b=%3Ciframe+width=%22480%22+height=%22270%22+src=%22https://www.youtube.com/embed/"+id+"%22+frameborder=%220%22+allowfullscreen%3E%3C/iframe%3E&eurl=https://i.ytimg.com/vi/"+id+"/hqdefault.jpg";
             $("#blogger").attr("href", blogger);
 
-            var facebook = "https://www.facebook.com/pages/Films-By-Kris/225113590836253#"+title2;
+            var facebook = "https://www.facebook.com/pages/Films-By-Kris/225113590836253";
             $("#facebook").attr("href", facebook);
         }
 
@@ -82,11 +82,11 @@
             $("#result").on('click', '#go', function(){
                 title2 = $("#text").val();
                 title2 = title2.replace(/#/g, '%23');
-                window.open("https://plus.google.com/share?url=https://www.youtube.com/watch?v="+id+"#"+title2);
-                window.open("https://twitter.com/intent/tweet?url=https://www.youtube.com/watch?v="+id+"&text="+title2+":&via=YouTube&related=YouTube,YouTubeTrends,YTCreators");
+                window.open("https://plus.google.com/share?url=https://www.youtube.com/watch?v="+id);
+                window.open("https://twitter.com/intent/tweet?text="+title2);
                 window.open("https://www.blogger.com/blog-this.g?n="+title2+"&source=youtube&b=%3Ciframe+width=%22480%22+height=%22270%22+src=%22https://www.youtube.com/embed/"+id+"%22+frameborder=%220%22+allowfullscreen%3E%3C/iframe%3E&eurl=https://i.ytimg.com/vi/"+id+"/hqdefault.jpg");
 
-                window.open("https://www.facebook.com/pages/Films-By-Kris/225113590836253#"+title2);
+                window.open("https://www.facebook.com/pages/Films-By-Kris/225113590836253");
             });
         });
 
