@@ -4,8 +4,22 @@
     <script src="js/jquery-2.1.1.min.js"></script> 
     <script>
         list="video.lst";
+        buttons="buttons.lst";
+
         var a=[];
+        var b=[];
+
         $(document).ready(function(){
+            //Get Button List
+            $.get( buttons, function( data ) {
+                var b = data.split('\n');
+                b.forEach(function(button){
+                    $("#buttons").append("<button class='tag'>" + button + "</button>");        
+                });
+            });
+
+
+            //Get list of video
             function get_list(){
                 $.get( list, function( data ) {
                     var lines = data.split('\n');
@@ -40,6 +54,7 @@
 
  
             $("#result").on('click', '#go', function(){
+                title2 = $("#text").val();
                 window.open("https://plus.google.com/share?url=https://www.youtube.com/watch?v="+id+"#"+title2);
                 window.open("https://twitter.com/intent/tweet?url=https://www.youtube.com/watch?v="+id+"&text="+title2+":&via=YouTube&related=YouTube,YouTubeTrends,YTCreators");
                 window.open("https://www.blogger.com/blog-this.g?n="+title2+"&source=youtube&b=%3Ciframe+width=%22480%22+height=%22270%22+src=%22https://www.youtube.com/embed/"+id+"%22+frameborder=%220%22+allowfullscreen%3E%3C/iframe%3E&eurl=https://i.ytimg.com/vi/"+id+"/hqdefault.jpg");
@@ -54,5 +69,6 @@
 
 <body>
     <div id="result"></div>
+    <div id="buttons"></div>
 </body>
 </html>
