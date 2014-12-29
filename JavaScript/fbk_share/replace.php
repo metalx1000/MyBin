@@ -34,7 +34,6 @@ busybox
 nokia
 n900
 lmms
-script
 midi
 terminal
 music
@@ -52,3 +51,8 @@ ZynAddSubFX
 Audacity
 SED
 vim
+JavaScript
+network
+curl
+cloud
+server
