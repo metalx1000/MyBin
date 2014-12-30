@@ -40,6 +40,7 @@
                 var val = $("#text").val();
                 $("#text").val(val + " " + tag);
                 update_links();
+                $(this).remove();
             });
             
 
