@@ -26,7 +26,11 @@ Ardour
 hydrogen
 pygame
 slitaz
-webkit
+We kit
+melt
+my
+Ffmpeg
+mplayer
 Windows
 netcat
 GUI
