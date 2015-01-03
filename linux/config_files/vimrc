@@ -2,7 +2,7 @@
 "  git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 "4space tabes
-:set shiftwidth=4 softtabstop=4 expandtab
+:set shiftwidth=2 softtabstop=2 expandtab
 
 "highlighting
 syntax on
