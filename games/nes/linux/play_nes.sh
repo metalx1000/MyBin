@@ -1,4 +1,6 @@
 #!/bin/bash
+#Script By Kris Occhipinti
+#GPLv3
 
 if [ "$1" = "list" ]
 then
