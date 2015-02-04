@@ -44,7 +44,7 @@ then
    echo "Emulator is installed."
 else
    echo "Installing Emulator."
-   sudo aptitude install fceu
+   sudo aptitude install fceux
 fi
 
 #################Download ROMS###############
