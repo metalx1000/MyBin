@@ -3,8 +3,7 @@
 clear
 
 dots(){
-  x="0"
-  while [ "$x" = "0" ]
+  while [ 1 ]
   do
     sleep 1
     echo -n "."
@@ -13,6 +12,7 @@ dots(){
  
 echo -n "Getting URLs of ROM pages."
 dots&
+dotid=$!
 
 for i in {A..Z};
 do 
@@ -36,5 +36,6 @@ cat page.lst|while read line;do
   cut -d\" -f1;
 done > rom.lst
 
-x="1"
+echo ""
 echo "ROM list complete!"
+kill $dotid
