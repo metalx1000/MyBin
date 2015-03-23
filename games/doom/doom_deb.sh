@@ -4,11 +4,11 @@ wad_dir="/usr/share/games/doom"
 doom_path="/usr/games/prboom"
 doom="prboom"
 wad_urls=(\
-'https://www.dropbox.com/s/dexn9tm0k5wsny5/doom.wad?dl=0' \
-'https://www.dropbox.com/s/2eqyfd1h9j0fq8i/doom2.wad?dl=0' \
-'https://www.dropbox.com/s/a035a6pfyjpb3fv/plutonia.wad?dl=0' \
-'https://www.dropbox.com/s/ukoj6bqfbsldhgo/tnt.wad?dl=0' \
-'https://www.dropbox.com/s/w3diao08tuxo9kp/prboom.wad?dl=0' \
+'https://dl.dropbox.com/s/dexn9tm0k5wsny5/doom.wad?dl=0' \
+'https://dl.dropbox.com/s/2eqyfd1h9j0fq8i/doom2.wad?dl=0' \
+'https://dl.dropbox.com/s/a035a6pfyjpb3fv/plutonia.wad?dl=0' \
+'https://dl.dropbox.com/s/ukoj6bqfbsldhgo/tnt.wad?dl=0' \
+'https://dl.dropbox.com/s/w3diao08tuxo9kp/prboom.wad?dl=0' \
 )
 function logo(){
 cat << "EOF"
