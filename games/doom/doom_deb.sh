@@ -59,6 +59,7 @@ done
 
 clear
 echo "Starting Random Doom Game..."
-files=($wad_dir/*)
-random_wad="$(printf "%s\n" "${files[RANDOM % ${#files[@]}]}"|head -n1)"
-$doom -iwad $random_wad
+#files=($wad_dir/*)
+#random_wad="$(printf "%s\n" "${files[RANDOM % ${#files[@]}]}"|head -n1)"
+#$doom -iwad $random_wad
+doom
