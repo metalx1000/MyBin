@@ -34,8 +34,7 @@ cat << "EOF"
 EOF
 }
 
-logo
-
+function check_doom(){
 if [ ! -f $doom_path ]
 then
   echo "Doom does not seem to be installed on your system."
@@ -43,7 +42,9 @@ then
   sudo apt-get install $doom -y 
   echo "Doom installed"
 fi
+}
 
+function get_wads(){
 echo "Downloading WAD files..."
 echo "Password maybe required for write permissions."
 for i in "${wad_urls[@]}"
@@ -63,4 +64,9 @@ echo "Starting Random Doom Game..."
 #files=($wad_dir/*)
 #random_wad="$(printf "%s\n" "${files[RANDOM % ${#files[@]}]}"|head -n1)"
 #$doom -iwad $random_wad
+}
+
+logo
+check_doom
+get_wads
 doom
