@@ -66,7 +66,6 @@ echo "Starting Random Doom Game..."
 #$doom -iwad $random_wad
 }
 
-logo
 check_doom
 get_wads
 doom
