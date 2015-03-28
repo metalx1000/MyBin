@@ -40,7 +40,8 @@ if [ ! -f $doom_path ]
 then
   echo "Doom does not seem to be installed on your system."
   echo "Now attempting to install Doom."
-  sudo apt-get install $doom -y && echo "Doom installed"||exit 1
+  sudo apt-get install $doom -y 
+  echo "Doom installed"
 fi
 
 echo "Downloading WAD files..."
