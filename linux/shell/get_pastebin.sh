@@ -1,23 +1,24 @@
 #!/bin/bash
 #Bulk Downloads a users pastbin files
-
 if [ $# -lt 1 ]
 then
     echo "Useage: $0 <user> <number of Pages>"
     echo "Example: $0 metalx1000 2"
-    exit 0
-fi
+else
 
 user="$1"
 if [ $# -lt 2 ]
 then
     let pages=1
     echo "Downloading $pages of ${user}'s pastes."
-else 
+else
     let pages=$2
     echo "Downloading $pages of ${user}'s pastes."
 fi
 
+tmp="pastbin"
+mkdir "$tmp"
+cd "$tmp"
 
 for x in $(seq 1 $pages)
 do
@@ -28,9 +29,9 @@ do
         title="$(echo $line|cut -d\" -f13|cut -d\> -f2|cut -d\< -f1|cut -d\. -f1)"
         url="http://pastebin.com/raw.php?i=${id}"
         echo "Downloading $title..."
-        
+
         wget -q -c "$url" -O "$title"
-    
+
         type="$(head -n1 "$title")"
 
         if [[ $type == *bash* ]]
@@ -40,6 +41,14 @@ do
         then
             mv "$title" "${title}.py"
         fi
-        
-    done 
+
+    done
 done
+
+dos2unix *
+
+zip -r ../pastebin_backup_$(date +%s).zip *
+cd ../
+rm -fr "$tmp"
+
+fi
