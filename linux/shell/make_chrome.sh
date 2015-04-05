@@ -1,9 +1,11 @@
 #!/bin/bash
+browser="google-chrome"
+editor="vim"
 
 echo "What is the extension's name?"
 read name
 
-if [ $name = "" ]
+if [ "$name" = "" ]
 then
   echo "I need a name!!!"
   echo "Good Bye."
@@ -16,7 +18,7 @@ fi
 echo "What is the URL that will be accessed?"
 read site
 
-if [ $site = "" ]
+if [ "$site" = "" ]
 then
   echo "I need a URL!!!"
   echo "Good Bye."
@@ -26,7 +28,7 @@ fi
 echo "What is the URL of the icon image?"
 read icon
 
-if [ $icon = "" ]
+if [ "$icon" = "" ]
 then
   echo "I need a URL!!!"
   echo "Good Bye."
@@ -81,4 +83,6 @@ s.onload = function() {
 EOM
 
 echo "console.log('html JS code running.');" > "$dir/html_code.js"
+
+$browser "chrome://extensions/"
 
