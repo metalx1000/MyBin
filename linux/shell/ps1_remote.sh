@@ -41,8 +41,8 @@ fi
 mkdir -p win32/bin
 mkdir -p win32/res
 
-echo "Getting tiny url..."
-url="$(wget -q "http://tinyurl.com/api-create.php?url=$url" -O-)"
+#echo "Getting tiny url..."
+#url="$(wget -q "http://tinyurl.com/api-create.php?url=$url" -O-)"
 
 echo "New URL is $url"
 
