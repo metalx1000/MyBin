@@ -1,8 +1,8 @@
 #!/bin/bash
 
 path="/tmp/roms"
-zip="marvcap.zip"
-rom="mvsc.zip"
+zip="pun.zip"
+rom="punisher.zip"
 
 if [ ! -f "/usr/games/mame" ]
 then
@@ -12,8 +12,7 @@ fi
 mkdir "$path"
 cd "$path"
 
-
-wget -c "https://dl.dropbox.com/s/ui7zs7vcrw6q1qs/mavelcap.zip" -O "$zip"
+wget -c "https://dl.dropbox.com/s/3owjju70mjv2kda/punrom.zip" -O "$zip"
 unzip -o "$zip"
 
-mame $rom -rompath "$path"
+mame "$rom" -rompath "$path"
