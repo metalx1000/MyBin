@@ -4,8 +4,8 @@
 #description     :Converts Comic Books to a very simple HTML format
 #author          :Kris Occhipinti
 #site            :http://filmsbykris.com
-#date            :Tue Mar 31 09:16:01 EDT 2015
-#version         :5
+#date            :Fri Sep 18 19:06:34 EDT 2015
+#version         :6
 #License :GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 
 SAVEIFS=$IFS
@@ -28,6 +28,11 @@ do
           rm "$output_dir/x.zip"
   fi
 
+  find "$output_dir" -iname "*.jpg" | while read file
+  do
+    name="$(basename "$file"|tr '#' '-')"
+    mv "$file" "$output_dir/$name"
+  done
   ls "$output_dir" > "$output_dir/list.php"
   sed -i '/jpg/!d' "$output_dir/list.php"
 
@@ -118,3 +123,13 @@ do
 
 EOF
 done
+
+cd "$dir"
+for dir in */; do
+  for file in "$dir"*.jpg; do
+    convert -resize 256 "$file" "${file%/*}.jpg"
+    break 1 
+  done
+done
+
+wget "http://pastebin.com/raw.php?i=zg5uy0cd" -O index.php
