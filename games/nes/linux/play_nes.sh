@@ -2,6 +2,8 @@
 #Script By Kris Occhipinti
 #GPLv3
 
+emu="mednafen"
+
 if [ "$1" = "list" ]
 then
     echo "Getting list of Roms..."
@@ -39,12 +41,12 @@ then
     exit
 fi
 
-if [ -f "/usr/games/fceux" ];
+if [ -f "$emu" ];
 then
    echo "Emulator is installed."
 else
    echo "Installing Emulator."
-   sudo aptitude install fceux
+   sudo aptitude install $emu 
 fi
 
 #################Download ROMS###############
@@ -78,7 +80,7 @@ then
     rm /tmp/rom.zip
     clear
     echo "Getting Random Game..."
-    wget "$(sort -R rom.lst|head -n1)" -O /tmp/rom.zip && fceux /tmp/rom.zip
+    wget "$(sort -R rom.lst|head -n1)" -O /tmp/rom.zip && /usr/games/$emu /tmp/rom.zip
     rm /tmp/rom.zip
 else
     rm /tmp/rom.zip
@@ -86,7 +88,7 @@ else
     echo "Getting Game List..."
     url="$(wget -q "http://tinyurl.com/n4pgleb" -O- | sort -R|head -n1)"
     echo "Getting Random Game..."
-    wget "$url" -O /tmp/rom.zip && fceux /tmp/rom.zip
+    wget "$url" -O /tmp/rom.zip && /usr/games/$emu /tmp/rom.zip
     rm /tmp/rom.zip
 fi
 
