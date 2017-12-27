@@ -1,0 +1,69 @@
+conky.config = {
+	-- = 'Jess Date and Time',
+
+	-- = 'Conky settings',
+	background = false,
+	update_interval=1,
+
+	override_utf8_locale = true,
+
+	double_buffer = true,
+	no_buffers = true,
+
+	text_buffer_size = 2048,
+
+	-- = 'Window specifications',
+	own_window = false,
+	own_window_class = 'conky',
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	border_inner_margin = 0,
+	border_outer_margin = 0,
+
+	alignment = 'top_middle',
+	gap_x = -1075,
+	gap_y = 55,
+
+	-- = 'Graphics settings',
+	--draw_shades = 'no',
+	--draw_outline = 'no',
+	--draw_borders = 'no',
+	--draw_graph_borders = 'no',
+
+	-- = 'Graphics settings --',
+	draw_shades = false,
+	default_shade_color = '#AAAAAA',
+	draw_outline = false,
+	default_outline_color = '#AAAAAA',
+	draw_borders = false,
+	draw_graph_borders = false,
+	default_graph_width = 26, default_graph_height = 80,
+	show_graph_scale = false,
+	show_graph_range = false,
+
+	-- = 'Text settings',
+	use_xft = true,
+	xftalpha = 0,
+	text_buffer_size = 2048,
+
+	uppercase = false,
+
+	default_color = '#F23838',
+
+	--second = 'Monitor',
+	xinerama_head = 2,
+
+};
+
+conky.text = [[
+${voffset 10}${color F05000}${font Vonique 64,:size=50}${time %A}${font}${voffset -10}
+${voffset 10}${color EBC167}${font Vonique 64,:size=50}${time %B} ${time %e}${font}${voffset -10}
+${voffset 10}${color 38E6F2}${font Sportrop:size=65}${time %I:%M %p}${font}${voffset -10}
+${image ~/.conky.png -p 220,183}
+${voffset 10}${color 88909b}${font Vonique 64,:size=20}${addr eth0}
+${voffset 10}${color FF0000}${font Vonique 64,:size=20}CPU${cpugraph 26,150 FFFFFF FFFFFF -l}
+eth0${upspeedgraph eth0 26,80 FF0000 FFFFFF}
+${voffset 150}${color FFFFFF}Volume ${exec getVol}
+${execbar getVol|tr "%" " "}
+]];
