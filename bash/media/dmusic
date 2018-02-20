@@ -1,0 +1,60 @@
+#!/bin/bash
+#Copyright Kris Occhipinti
+#Feb 20th 2018
+#http://filmsbykris.com
+#starts Doom and youtube Music Playlist
+
+#playlist File
+playlist="$HOME/.dmusic.m3u"
+
+#playlist Url
+url='https://www.youtube.com/playlist?list=PLcUid3OP_4OVBK5JUVRshK25aIpuEWc-k'
+
+#function
+func="$1"
+
+function main(){
+  if [ "$func" = "update" ]
+  then
+    update
+  elif [ "$func" = "music" ]
+  then
+    music 100
+  else
+    play
+  fi
+}
+
+function update(){
+  echo "Updating $playlist, please wait..."
+    youtube-dl --get-id "$url"|\
+    while read id;
+  do 
+    echo "https://www.youtube.com/watch?v=$id";
+  done > $playlist
+}
+
+function music(){
+  if [ "$#" -lt "1" ]
+  then
+    vol="50"
+  else
+    vol="$1"
+  fi
+
+  tmux split "mpv --no-video --volume $vol --shuffle \"$playlist\""
+}
+
+function game(){
+  wads="$(find /home/metalx1000/doom/ -iname "*.WAD"|while read wad;do echo "-file $wad";done |tr "\n" " ")"
+  dehs="$(find /home/metalx1000/doom/ -iname "*.deh"|while read deh;do echo "-deh $wdeh";done |tr "\n" " ")"
+  prboom-plus -nomusic $wads $deh
+}
+
+function play(){
+  music
+   game
+}
+
+main
+echo "Goodbye"
