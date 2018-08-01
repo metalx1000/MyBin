@@ -24,10 +24,11 @@ port="80"
 link="$(xclip -o)"
 
 function main(){
-  output "Checking link $link..."
-  vid="$(youtube-dl -g -f 22 $link)"
-  output "Playing $vid"
+  youtube
+  playvideo
+}
 
+function playvideo(){
   curl -s --data-binary\
     '{"jsonrpc":"2.0","id":"1","method":"Player.Open","params":{"item":{"file":"'"$vid"'"}}}'\
     -H 'content-type: application/json;' http://$server:$port/jsonrpc
@@ -36,6 +37,12 @@ function main(){
 function output(){
   echo "$1"
   notify-send -t 3000 "Kodi Play" "$1"
+}
+
+function youtube(){
+  output "Checking link $link..."
+  vid="$(youtube-dl -g -f 22 $link||youtube-dl -g -f 18 $link || echo "$link")"
+  output "Playing $vid"
 }
 
 main
