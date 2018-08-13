@@ -1,0 +1,71 @@
+#!/bin/bash
+
+#Created by Kris Occhipinti
+#Aug 13th 2018
+#http://filmsbykris.com
+
+#Licensed under the GPLv3
+#This is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+#
+#This code is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#
+#You should have received a copy of the GNU General Public License
+#Along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#Description:
+#grabs text/url from last highlighted mouse selection
+#and gets a tinyurl link and puts it into clipboard
+
+function main(){
+  #check for needed files/program
+  check_depend
+
+  #get last mouse selection
+  URL="$(xclip -o)"
+
+  echo "Starting URL $URL"
+
+  #get tinyurl
+  tinyURL="$(curl -s "http://tinyurl.com/create.php?url=$URL"|grep "The following URL" -A3|tail -1|awk -F\> '{print $3}'|sed 's,</b,,')"
+
+  #check if a url is returned
+  if [ "$tinyURL" = "" ];then echo "Error getting URL";exit 1;fi
+
+  #put the tiny url in the clipboards for pasting
+  echo "$tinyURL"|xclip
+  echo "$tinyURL"|xclip -selection clipboard
+
+  #output short link to shell
+  echo "URL in Clipboard: $tinyURL"
+
+  #give qrcode output to shell for scanning
+  echo "$tinyURL"|qrencode -t UTF8
+
+  #Display notification - Time out after 5 seconds
+  notify-send -t 5000 "URL Shortened in Clipboard" "$tinyURL"
+}
+
+function check_depend(){
+  #list for dependencies
+  deps=( "/usr/bin/qrencode" "/usr/bin/xclip")
+  packages=( qrencode xclip );
+
+  #check for needed dependencies
+  for i in "${deps[@]}"
+  do
+    if [ ! -f "$i" ];
+    then
+      echo "Attempting to install dependencies..."
+      echo "Needed dependencies: ${packages[@]}"
+      sudo apt-get install ${packages[@]} && break || (echo "Install of dependencies failed";exit 1) 
+    fi
+  done
+}
+
+main
